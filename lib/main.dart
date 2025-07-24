@@ -5,10 +5,10 @@ import 'dart:io';
 import 'dart:isolate';
 import 'dart:ui';
 
-import 'package:fl_clash/plugins/app.dart';
-import 'package:fl_clash/plugins/tile.dart';
-import 'package:fl_clash/plugins/vpn.dart';
-import 'package:fl_clash/state.dart';
+import 'package:flowvy/plugins/app.dart';
+import 'package:flowvy/plugins/tile.dart';
+import 'package:flowvy/plugins/vpn.dart';
+import 'package:flowvy/state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -26,7 +26,7 @@ Future<void> main() async {
   await globalState.initApp(version);
   await android?.init();
   await window?.init(version);
-  HttpOverrides.global = FlClashHttpOverrides();
+  HttpOverrides.global = FlowvyHttpOverrides();
   runApp(ProviderScope(
     child: const Application(),
   ));

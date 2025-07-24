@@ -5,13 +5,13 @@ import 'dart:isolate';
 import 'dart:typed_data';
 
 import 'package:archive/archive.dart';
-import 'package:fl_clash/clash/clash.dart';
-import 'package:fl_clash/common/archive.dart';
-import 'package:fl_clash/enum/enum.dart';
-import 'package:fl_clash/plugins/app.dart';
-import 'package:fl_clash/providers/providers.dart';
-import 'package:fl_clash/state.dart';
-import 'package:fl_clash/widgets/dialog.dart';
+import 'package:flowvy/clash/clash.dart';
+import 'package:flowvy/common/archive.dart';
+import 'package:flowvy/enum/enum.dart';
+import 'package:flowvy/plugins/app.dart';
+import 'package:flowvy/providers/providers.dart';
+import 'package:flowvy/state.dart';
+import 'package:flowvy/widgets/dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path/path.dart';
@@ -163,6 +163,7 @@ class AppController {
 
   Future<void> updateProfile(Profile profile) async {
     final newProfile = await profile.update();
+
     _ref
         .read(profilesProvider.notifier)
         .setProfile(newProfile.copyWith(isUpdating: false));
@@ -595,7 +596,7 @@ class AppController {
     linkManager.initAppLinksListen(
       (url) async {
         final res = await globalState.showMessage(
-          title: "${appLocalizations.add}${appLocalizations.profile}",
+          title: appLocalizations.addProfileTitle,
           message: TextSpan(
             children: [
               TextSpan(text: appLocalizations.doYouWantToPass),
@@ -608,8 +609,7 @@ class AppController {
                 ),
               ),
               TextSpan(
-                  text:
-                      "${appLocalizations.create}${appLocalizations.profile}"),
+                  text: appLocalizations.createProfileText,),
             ],
           ),
         );
@@ -676,8 +676,18 @@ class AppController {
           url: url,
         ).update();
       },
-      title: "${appLocalizations.add}${appLocalizations.profile}",
+      title: appLocalizations.addProfileTitle,
     );
+
+    if (profile?.announce != null && profile!.announce!.isNotEmpty) {
+      globalState.showMessage(
+        title: appLocalizations.tip,
+        message: TextSpan(text: profile.announce!),
+        cancelable: false,
+        confirmText: appLocalizations.confirm,
+      );
+    }
+
     if (profile != null) {
       await addProfile(profile);
     }
@@ -699,7 +709,7 @@ class AppController {
         await Future.delayed(const Duration(milliseconds: 300));
         return await Profile.normal(label: platformFile?.name).saveFile(bytes);
       },
-      title: "${appLocalizations.add}${appLocalizations.profile}",
+      title: appLocalizations.addProfileTitle,
     );
     if (profile != null) {
       await addProfile(profile);

@@ -1,2 +1,11 @@
-app_name: 'FlClash'
+app_name: 'Flowvy'
 output: 'dist/'
+
+distributors:
+  - name: windows
+    platforms:
+      - exe
+    options:
+      locales:
+        - en
+        - ru

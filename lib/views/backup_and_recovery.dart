@@ -1,16 +1,16 @@
 import 'dart:typed_data';
 
-import 'package:fl_clash/common/common.dart';
-import 'package:fl_clash/common/dav_client.dart';
-import 'package:fl_clash/enum/enum.dart';
-import 'package:fl_clash/models/models.dart';
-import 'package:fl_clash/providers/config.dart';
-import 'package:fl_clash/state.dart';
-import 'package:fl_clash/widgets/dialog.dart';
-import 'package:fl_clash/widgets/fade_box.dart';
-import 'package:fl_clash/widgets/input.dart';
-import 'package:fl_clash/widgets/list.dart';
-import 'package:fl_clash/widgets/text.dart';
+import 'package:flowvy/common/common.dart';
+import 'package:flowvy/common/dav_client.dart';
+import 'package:flowvy/enum/enum.dart';
+import 'package:flowvy/models/models.dart';
+import 'package:flowvy/providers/config.dart';
+import 'package:flowvy/state.dart';
+import 'package:flowvy/widgets/dialog.dart';
+import 'package:flowvy/widgets/fade_box.dart';
+import 'package:flowvy/widgets/input.dart';
+import 'package:flowvy/widgets/list.dart';
+import 'package:flowvy/widgets/text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';

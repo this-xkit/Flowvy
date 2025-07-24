@@ -1,15 +1,15 @@
-import 'package:fl_clash/common/common.dart';
-import 'package:fl_clash/enum/enum.dart';
-import 'package:fl_clash/models/models.dart';
-import 'package:fl_clash/pages/editor.dart';
-import 'package:fl_clash/providers/config.dart';
-import 'package:fl_clash/state.dart';
-import 'package:fl_clash/widgets/card.dart';
-import 'package:fl_clash/widgets/input.dart';
-import 'package:fl_clash/widgets/list.dart';
-import 'package:fl_clash/widgets/null_status.dart';
-import 'package:fl_clash/widgets/popup.dart';
-import 'package:fl_clash/widgets/scaffold.dart';
+import 'package:flowvy/common/common.dart';
+import 'package:flowvy/enum/enum.dart';
+import 'package:flowvy/models/models.dart';
+import 'package:flowvy/pages/editor.dart';
+import 'package:flowvy/providers/config.dart';
+import 'package:flowvy/state.dart';
+import 'package:flowvy/widgets/card.dart';
+import 'package:flowvy/widgets/input.dart';
+import 'package:flowvy/widgets/list.dart';
+import 'package:flowvy/widgets/null_status.dart';
+import 'package:flowvy/widgets/popup.dart';
+import 'package:flowvy/widgets/scaffold.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -24,7 +24,7 @@ class _ScriptsViewState extends ConsumerState<ScriptsView> {
   _handleDelScript(String label) async {
     final res = await globalState.showMessage(
       message:
-          TextSpan(text: appLocalizations.deleteTip(appLocalizations.script)),
+          TextSpan(text: appLocalizations.deleteTip),
     );
     if (res != true) {
       return;
@@ -41,7 +41,7 @@ class _ScriptsViewState extends ConsumerState<ScriptsView> {
       final scripts = vm2.b;
       if (scripts.isEmpty) {
         return NullStatus(
-          label: appLocalizations.nullTip(appLocalizations.script),
+          label: appLocalizations.emptyStateMessage,
         );
       }
       return ListView.builder(

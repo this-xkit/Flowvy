@@ -1,11 +1,11 @@
 import 'dart:io';
 
-import 'package:fl_clash/common/common.dart';
-import 'package:fl_clash/enum/enum.dart';
-import 'package:fl_clash/models/models.dart';
-import 'package:fl_clash/providers/providers.dart';
-import 'package:fl_clash/state.dart';
-import 'package:fl_clash/widgets/widgets.dart';
+import 'package:flowvy/common/common.dart';
+import 'package:flowvy/enum/enum.dart';
+import 'package:flowvy/models/models.dart';
+import 'package:flowvy/providers/providers.dart';
+import 'package:flowvy/state.dart';
+import 'package:flowvy/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
@@ -47,7 +47,7 @@ class HomePage extends StatelessWidget {
             bottomNavigationBar: bottomNavigationBar,
           );
         },
-        child: _HomePageView(),
+        child: const _HomePageView(),
       ),
     );
   }
@@ -125,27 +125,63 @@ class _HomePageViewState extends ConsumerState<_HomePageView> {
   @override
   Widget build(BuildContext context) {
     final navigationItems = ref.watch(currentNavigationsStateProvider).value;
+    final announce = ref.watch(
+      currentProfileProvider.select((value) => value?.announce),
+    );
     return PageView.builder(
       controller: _pageController,
       physics: const NeverScrollableScrollPhysics(),
       itemCount: navigationItems.length,
-      // onPageChanged: (index) {
-      //   debouncer.call(DebounceTag.pageChange, () {
-      //     WidgetsBinding.instance.addPostFrameCallback((_) {
-      //       if (_pageIndex != index) {
-      //         final pageLabel = navigationItems[index].label;
-      //         _toPage(pageLabel, true);
-      //       }
-      //     });
-      //   });
-      // },
       itemBuilder: (_, index) {
         final navigationItem = navigationItems[index];
-        return KeepScope(
+        final pageWidget = KeepScope(
           keep: navigationItem.keep,
           key: Key(navigationItem.label.name),
           child: navigationItem.view,
         );
+
+        if (navigationItem.label == PageLabel.dashboard &&
+            announce != null &&
+            announce.isNotEmpty) {
+          return Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(minWidth: double.infinity),
+                  child: CommonCard(
+                    info: null,
+                    onPressed: () {},
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          const Icon(Icons.campaign),
+                          const SizedBox(width: 8),
+                          Expanded(
+                            child: Text(
+                              announce,
+                              textAlign: TextAlign.center,
+                              style: Theme.of(context).textTheme.bodyMedium,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 16),
+              Expanded(
+                child: pageWidget,
+              ),
+            ],
+          );
+        }
+
+        return pageWidget;
       },
     );
   }
@@ -164,7 +200,7 @@ class CommonNavigationBar extends ConsumerWidget {
   });
 
   @override
-  Widget build(BuildContext context, ref) {
+  Widget build(BuildContext context, WidgetRef ref) {
     if (viewMode == ViewMode.mobile) {
       return NavigationBarTheme(
         data: _NavigationBarDefaultsM3(context),

@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'dart:isolate';
-import 'package:fl_clash/state.dart';
+import 'package:flowvy/state.dart';
 import 'package:flutter/services.dart';
 
 import '../clash/lib.dart';

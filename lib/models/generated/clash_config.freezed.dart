@@ -1441,7 +1441,7 @@ class __$$TunImplCopyWithImpl<$Res> extends _$TunCopyWithImpl<$Res, _$TunImpl>
 @JsonSerializable()
 class _$TunImpl implements _Tun {
   const _$TunImpl(
-      {this.enable = false,
+      {this.enable = true,
       this.device = appName,
       @JsonKey(name: "auto-route") this.autoRoute = false,
       this.stack = TunStack.mixed,
@@ -3924,7 +3924,7 @@ class _$ClashConfigImpl implements _ClashConfig {
       this.ipv6 = false,
       @JsonKey(
           name: "find-process-mode", unknownEnumValue: FindProcessMode.always)
-      this.findProcessMode = FindProcessMode.off,
+      this.findProcessMode = FindProcessMode.always,
       @JsonKey(name: "keep-alive-interval")
       this.keepAliveInterval = defaultKeepAliveInterval,
       @JsonKey(name: "unified-delay") this.unifiedDelay = true,

@@ -14,7 +14,7 @@ import com.follow.clash.TempActivity
 
 
 @RequiresApi(Build.VERSION_CODES.N)
-class FlClashTileService : TileService() {
+class FlowvyTileService : TileService() {
 
     private val observer = Observer<RunState> { runState ->
         updateTile(runState)

@@ -327,7 +327,7 @@ class _$AppSettingPropsImpl implements _AppSettingProps {
       this.autoLaunch = false,
       this.silentLaunch = false,
       this.autoRun = false,
-      this.openLogs = false,
+      this.openLogs = true,
       this.closeConnections = true,
       this.testUrl = defaultTestUrl,
       this.isAnimateToPage = true,
@@ -722,7 +722,7 @@ class __$$AccessControlImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$AccessControlImpl implements _AccessControl {
   const _$AccessControlImpl(
-      {this.enable = false,
+      {this.enable = true,
       this.mode = AccessControlMode.rejectSelected,
       final List<String> acceptList = const [],
       final List<String> rejectList = const [],
@@ -981,7 +981,7 @@ class __$$WindowPropsImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$WindowPropsImpl implements _WindowProps {
   const _$WindowPropsImpl(
-      {this.width = 750, this.height = 600, this.top, this.left});
+      {this.width = 491, this.height = 825, this.top, this.left});
 
   factory _$WindowPropsImpl.fromJson(Map<String, dynamic> json) =>
       _$$WindowPropsImplFromJson(json);
@@ -1449,7 +1449,7 @@ class __$$NetworkPropsImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$NetworkPropsImpl implements _NetworkProps {
   const _$NetworkPropsImpl(
-      {this.systemProxy = true,
+      {this.systemProxy = false,
       final List<String> bypassDomain = defaultBypassDomain,
       this.routeMode = RouteMode.config,
       this.autoSetSystemDns = true})

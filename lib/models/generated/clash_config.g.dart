@@ -130,7 +130,7 @@ Map<String, dynamic> _$$SnifferConfigImplToJson(_$SnifferConfigImpl instance) =>
     };
 
 _$TunImpl _$$TunImplFromJson(Map<String, dynamic> json) => _$TunImpl(
-      enable: json['enable'] as bool? ?? false,
+      enable: json['enable'] as bool? ?? true,
       device: json['device'] as String? ?? appName,
       autoRoute: json['auto-route'] as bool? ?? false,
       stack: $enumDecodeNullable(_$TunStackEnumMap, json['stack']) ??
@@ -345,7 +345,7 @@ _$ClashConfigImpl _$$ClashConfigImplFromJson(Map<String, dynamic> json) =>
       findProcessMode: $enumDecodeNullable(
               _$FindProcessModeEnumMap, json['find-process-mode'],
               unknownValue: FindProcessMode.always) ??
-          FindProcessMode.off,
+          FindProcessMode.always,
       keepAliveInterval: (json['keep-alive-interval'] as num?)?.toInt() ??
           defaultKeepAliveInterval,
       unifiedDelay: json['unified-delay'] as bool? ?? true,

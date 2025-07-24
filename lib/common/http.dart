@@ -1,9 +1,9 @@
 import 'dart:io';
 
-import 'package:fl_clash/common/common.dart';
-import 'package:fl_clash/state.dart';
+import 'package:flowvy/common/common.dart';
+import 'package:flowvy/state.dart';
 
-class FlClashHttpOverrides extends HttpOverrides {
+class FlowvyHttpOverrides extends HttpOverrides {
   static String handleFindProxy(Uri url) {
     if ([localhost].contains(url.host)) {
       return "DIRECT";

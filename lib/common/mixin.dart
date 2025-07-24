@@ -1,4 +1,4 @@
-import 'package:fl_clash/models/models.dart';
+import 'package:flowvy/models/models.dart';
 import 'package:flutter/material.dart';
 import 'package:riverpod/riverpod.dart';
 import 'context.dart';

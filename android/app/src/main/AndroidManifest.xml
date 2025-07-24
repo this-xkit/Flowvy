@@ -24,11 +24,11 @@
         tools:ignore="QueryAllPackagesPermission" />
 
     <application
-        android:name=".FlClashApplication"
+        android:name=".FlowvyApplication"
         android:banner="@mipmap/ic_banner"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="FlClash">
+        android:label="Flowvy">
         <activity
             android:name="com.follow.clash.MainActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
@@ -61,7 +61,7 @@
 
                 <data android:scheme="clash" />
                 <data android:scheme="clashmeta" />
-                <data android:scheme="flclash" />
+                <data android:scheme="flowvy" />
 
                 <data android:host="install-config" />
             </intent-filter>
@@ -90,10 +90,10 @@
         </activity>
 
         <service
-            android:name=".services.FlClashTileService"
+            android:name=".services.FlowvyTileService"
             android:exported="true"
             android:icon="@drawable/ic"
-            android:label="FlClash"
+            android:label="Flowvy"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
             tools:targetApi="n">
             <intent-filter>
@@ -127,7 +127,7 @@
         </provider>
 
         <service
-            android:name=".services.FlClashVpnService"
+            android:name=".services.FlowvyVpnService"
             android:exported="false"
             android:foregroundServiceType="dataSync"
             android:permission="android.permission.BIND_VPN_SERVICE">
@@ -140,7 +140,7 @@
         </service>
 
         <service
-            android:name=".services.FlClashService"
+            android:name=".services.FlowvyService"
             android:exported="false"
             android:foregroundServiceType="dataSync">
             <property

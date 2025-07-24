@@ -1,7 +1,7 @@
 // ignore_for_file: invalid_annotation_target
 
-import 'package:fl_clash/common/common.dart';
-import 'package:fl_clash/enum/enum.dart';
+import 'package:flowvy/common/common.dart';
+import 'package:flowvy/enum/enum.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -34,7 +34,7 @@ const defaultAppSettingProps = AppSettingProps();
 const defaultVpnProps = VpnProps();
 const defaultNetworkProps = NetworkProps();
 const defaultProxiesStyle = ProxiesStyle();
-const defaultWindowProps = WindowProps();
+const defaultWindowProps = WindowProps(width: 900, height: 700);
 const defaultAccessControl = AccessControl();
 final defaultThemeProps = ThemeProps(
   primaryColor: defaultPrimaryColor,
@@ -47,7 +47,7 @@ const List<DashboardWidget> defaultDashboardWidgets = [
   DashboardWidget.outboundMode,
   DashboardWidget.networkDetection,
   DashboardWidget.trafficUsage,
-  DashboardWidget.intranetIp,
+  DashboardWidget.memoryInfo,
 ];
 
 List<DashboardWidget> dashboardWidgetsSafeFormJson(
@@ -74,7 +74,7 @@ class AppSettingProps with _$AppSettingProps {
     @Default(false) bool autoLaunch,
     @Default(false) bool silentLaunch,
     @Default(false) bool autoRun,
-    @Default(false) bool openLogs,
+    @Default(true) bool openLogs,
     @Default(true) bool closeConnections,
     @Default(defaultTestUrl) String testUrl,
     @Default(true) bool isAnimateToPage,
@@ -100,7 +100,7 @@ class AppSettingProps with _$AppSettingProps {
 @freezed
 class AccessControl with _$AccessControl {
   const factory AccessControl({
-    @Default(false) bool enable,
+    @Default(true) bool enable,
     @Default(AccessControlMode.rejectSelected) AccessControlMode mode,
     @Default([]) List<String> acceptList,
     @Default([]) List<String> rejectList,
@@ -123,8 +123,8 @@ extension AccessControlExt on AccessControl {
 @freezed
 class WindowProps with _$WindowProps {
   const factory WindowProps({
-    @Default(750) double width,
-    @Default(600) double height,
+    @Default(491) double width,
+    @Default(825) double height,
     double? top,
     double? left,
   }) = _WindowProps;
@@ -150,7 +150,7 @@ class VpnProps with _$VpnProps {
 @freezed
 class NetworkProps with _$NetworkProps {
   const factory NetworkProps({
-    @Default(true) bool systemProxy,
+    @Default(false) bool systemProxy,
     @Default(defaultBypassDomain) List<String> bypassDomain,
     @Default(RouteMode.config) RouteMode routeMode,
     @Default(true) bool autoSetSystemDns,

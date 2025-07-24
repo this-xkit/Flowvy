@@ -1,5 +1,5 @@
-import 'package:fl_clash/plugins/tile.dart';
-import 'package:fl_clash/state.dart';
+import 'package:flowvy/plugins/tile.dart';
+import 'package:flowvy/state.dart';
 import 'package:flutter/material.dart';
 
 class TileManager extends StatefulWidget {

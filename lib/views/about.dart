@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:fl_clash/common/common.dart';
-import 'package:fl_clash/providers/config.dart';
-import 'package:fl_clash/state.dart';
-import 'package:fl_clash/widgets/list.dart';
+import 'package:flowvy/common/common.dart';
+import 'package:flowvy/providers/config.dart';
+import 'package:flowvy/state.dart';
+import 'package:flowvy/widgets/list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -47,15 +47,18 @@ class AboutView extends StatelessWidget {
             _checkUpdate(context);
           },
         ),
-        ListItem(
-          title: const Text("Telegram"),
-          onTap: () {
-            globalState.openUrl(
-              "https://t.me/FlClash",
-            );
-          },
-          trailing: const Icon(Icons.launch),
-        ),
+        // --- Убираем этот ListItem с Telegram ссылкой ---
+        // ListItem(
+        //   title: const Text("Telegram"),
+        //   onTap: () {
+        //     globalState.openUrl(
+        //       "https://t.me/FlClash",
+        //     );
+        //   },
+        //   trailing: const Icon(Icons.launch),
+        // ),
+        // ------------------------------------------------
+
         ListItem(
           title: Text(appLocalizations.project),
           onTap: () {
@@ -78,22 +81,23 @@ class AboutView extends StatelessWidget {
     );
   }
 
+  // --- Обновляем _buildContributorsSection ---
   List<Widget> _buildContributorsSection() {
     const contributors = [
       Contributor(
-        avatar: "assets/images/avatars/june2.jpg",
-        name: "June2",
-        link: "https://t.me/Jibadong",
+        avatar: "assets/images/avatars/x_kit_.jpg", // Новая аватарка
+        name: "x_kit_",
+        link: "https://t.me/this_xkit",
       ),
       Contributor(
-        avatar: "assets/images/avatars/arue.jpg",
-        name: "Arue",
-        link: "https://t.me/xrcm6868",
+        avatar: "assets/images/avatars/pluralplay.jpg", // Новая аватарка
+        name: "pluralplay",
+        link: "https://t.me/g33kar",
       ),
     ];
     return generateSection(
       separated: false,
-      title: appLocalizations.otherContributors,
+      title: appLocalizations.Contributors,
       items: [
         ListItem(
           title: SingleChildScrollView(
@@ -112,6 +116,7 @@ class AboutView extends StatelessWidget {
       ],
     );
   }
+  // ------------------------------------------
 
   @override
   Widget build(BuildContext context) {
@@ -170,7 +175,7 @@ class AboutView extends StatelessWidget {
       const SizedBox(
         height: 12,
       ),
-      ..._buildContributorsSection(),
+      ..._buildContributorsSection(), // Используем обновленную секцию
       ..._buildMoreSection(context),
     ];
     return Padding(

@@ -1,3 +1,3 @@
-import 'package:fl_clash/l10n/l10n.dart';
+import 'package:flowvy/l10n/l10n.dart';
 
 final appLocalizations = AppLocalizations.current;

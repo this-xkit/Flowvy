@@ -1,5 +1,5 @@
-import 'package:fl_clash/models/models.dart';
-import 'package:fl_clash/state.dart';
+import 'package:flowvy/models/models.dart';
+import 'package:flowvy/state.dart';
 import 'package:flutter/cupertino.dart';
 
 class CommonPrint {
@@ -13,7 +13,7 @@ class CommonPrint {
   }
 
   log(String? text) {
-    final payload = "[FlClash] $text";
+    final payload = "[Flowvy] $text";
     debugPrint(payload);
     if (!globalState.isInit) {
       return;

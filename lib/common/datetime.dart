@@ -1,4 +1,4 @@
-import 'package:fl_clash/common/app_localizations.dart';
+import 'package:flowvy/common/app_localizations.dart';
 
 extension DateTimeExtension on DateTime {
   bool get isBeforeNow {

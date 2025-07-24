@@ -22,7 +22,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 
-class FlClashVpnService : VpnService(), BaseServiceInterface {
+class FlowvyVpnService : VpnService(), BaseServiceInterface {
     override fun onCreate() {
         super.onCreate()
         GlobalState.initServiceEngine()
@@ -106,7 +106,7 @@ class FlClashVpnService : VpnService(), BaseServiceInterface {
                     }
                 }
             }
-            setSession("FlClash")
+            setSession("Flowvy")
             setBlocking(false)
             if (Build.VERSION.SDK_INT >= 29) {
                 setMetered(false)
@@ -139,7 +139,7 @@ class FlClashVpnService : VpnService(), BaseServiceInterface {
 
     private suspend fun notificationBuilder(): NotificationCompat.Builder {
         if (cachedBuilder == null) {
-            cachedBuilder = createFlClashNotificationBuilder().await()
+            cachedBuilder = createFlowvyNotificationBuilder().await()
         }
         return cachedBuilder!!
     }
@@ -161,7 +161,7 @@ class FlClashVpnService : VpnService(), BaseServiceInterface {
     private val binder = LocalBinder()
 
     inner class LocalBinder : Binder() {
-        fun getService(): FlClashVpnService = this@FlClashVpnService
+        fun getService(): FlowvyVpnService = this@FlowvyVpnService
 
         override fun onTransact(code: Int, data: Parcel, reply: Parcel?, flags: Int): Boolean {
             try {

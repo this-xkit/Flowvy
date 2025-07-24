@@ -1,13 +1,13 @@
-import 'package:fl_clash/enum/enum.dart';
-import 'package:fl_clash/models/models.dart';
-import 'package:fl_clash/views/views.dart';
+import 'package:flowvy/enum/enum.dart';
+import 'package:flowvy/models/models.dart';
+import 'package:flowvy/views/views.dart';
 import 'package:flutter/material.dart';
 
 class Navigation {
   static Navigation? _instance;
 
   List<NavigationItem> getItems({
-    bool openLogs = false,
+    bool openLogs = true,
     bool hasProxies = false,
   }) {
     return [

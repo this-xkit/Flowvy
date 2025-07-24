@@ -1,0 +1,173 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Flowvy",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "Flowvy (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "Flowvy (release mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "flutter_distributor",
+            "cwd": "plugins\\flutter_distributor",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "proxy",
+            "cwd": "plugins\\proxy",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "proxy (profile mode)",
+            "cwd": "plugins\\proxy",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "proxy (release mode)",
+            "cwd": "plugins\\proxy",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "window_ext",
+            "cwd": "plugins\\window_ext",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "window_ext (profile mode)",
+            "cwd": "plugins\\window_ext",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "window_ext (release mode)",
+            "cwd": "plugins\\window_ext",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "custom_binary_name",
+            "cwd": "plugins\\flutter_distributor\\examples\\custom_binary_name",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "custom_binary_name (profile mode)",
+            "cwd": "plugins\\flutter_distributor\\examples\\custom_binary_name",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "custom_binary_name (release mode)",
+            "cwd": "plugins\\flutter_distributor\\examples\\custom_binary_name",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "hello_world",
+            "cwd": "plugins\\flutter_distributor\\examples\\hello_world",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "hello_world (profile mode)",
+            "cwd": "plugins\\flutter_distributor\\examples\\hello_world",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "hello_world (release mode)",
+            "cwd": "plugins\\flutter_distributor\\examples\\hello_world",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "multiple_flavors",
+            "cwd": "plugins\\flutter_distributor\\examples\\multiple_flavors",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "multiple_flavors (profile mode)",
+            "cwd": "plugins\\flutter_distributor\\examples\\multiple_flavors",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "multiple_flavors (release mode)",
+            "cwd": "plugins\\flutter_distributor\\examples\\multiple_flavors",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "flutter_app_builder",
+            "cwd": "plugins\\flutter_distributor\\packages\\flutter_app_builder",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "flutter_app_packager",
+            "cwd": "plugins\\flutter_distributor\\packages\\flutter_app_packager",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "flutter_app_publisher",
+            "cwd": "plugins\\flutter_distributor\\packages\\flutter_app_publisher",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "flutter_distributor",
+            "cwd": "plugins\\flutter_distributor\\packages\\flutter_distributor",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "parse_app_package",
+            "cwd": "plugins\\flutter_distributor\\packages\\parse_app_package",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "shell_executor",
+            "cwd": "plugins\\flutter_distributor\\packages\\shell_executor",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "shell_uikit",
+            "cwd": "plugins\\flutter_distributor\\packages\\shell_uikit",
+            "request": "launch",
+            "type": "dart"
+        }
+    ]
+}

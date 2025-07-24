@@ -3,9 +3,9 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
 
-import 'package:fl_clash/clash/core.dart';
-import 'package:fl_clash/common/common.dart';
-import 'package:fl_clash/enum/enum.dart';
+import 'package:flowvy/clash/core.dart';
+import 'package:flowvy/common/common.dart';
+import 'package:flowvy/enum/enum.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'clash_config.dart';
@@ -58,6 +58,7 @@ class Profile with _$Profile {
     @Default({}) SelectedMap selectedMap,
     @Default({}) Set<String> unfoldSet,
     @Default(OverrideData()) OverrideData overrideData,
+    String? announce,
     @JsonKey(includeToJson: false, includeFromJson: false)
     @Default(false)
     bool isUpdating,
@@ -169,11 +170,25 @@ extension ProfileExtension on Profile {
 
   Future<Profile> update() async {
     final response = await request.getFileResponseForUrl(url);
+
     final disposition = response.headers.value("content-disposition");
     final userinfo = response.headers.value('subscription-userinfo');
+
+    String? announce;
+    final announceHeader = response.headers.value('Announce');
+    if (announceHeader != null && announceHeader.startsWith('base64:')) {
+      final encoded = announceHeader.substring(7);
+      try {
+        announce = utf8.decode(base64.decode(encoded));
+      } catch (e) {
+        commonPrint.log('Error decoding announce: $e');
+      }
+    }
+
     return await copyWith(
       label: label ?? utils.getFileNameForDisposition(disposition) ?? id,
       subscriptionInfo: SubscriptionInfo.formHString(userinfo),
+      announce: announce,
     ).saveFile(response.data);
   }
 

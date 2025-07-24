@@ -5,9 +5,9 @@ import 'dart:typed_data';
 
 import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
-import 'package:fl_clash/common/common.dart';
-import 'package:fl_clash/models/models.dart';
-import 'package:fl_clash/state.dart';
+import 'package:flowvy/common/common.dart';
+import 'package:flowvy/models/models.dart';
+import 'package:flowvy/state.dart';
 import 'package:flutter/cupertino.dart';
 
 class Request {
@@ -24,11 +24,22 @@ class Request {
       ),
     );
     _clashDio = Dio();
+
+    _clashDio.interceptors.add(
+      InterceptorsWrapper(
+        onRequest: (options, handler) async {
+          final deviceHeaders = await utils.getDeviceHeaders();
+          options.headers.addAll(deviceHeaders);
+          return handler.next(options);
+        },
+      ),
+    );
+    
     _clashDio.httpClientAdapter = IOHttpClientAdapter(createHttpClient: () {
       final client = HttpClient();
       client.findProxy = (Uri uri) {
-        client.userAgent = globalState.ua;
-        return FlClashHttpOverrides.handleFindProxy(uri);
+        client.userAgent = 'Mihomo/${globalState.ua}';
+        return FlowvyHttpOverrides.handleFindProxy(uri);
       };
       return client;
     });
@@ -113,7 +124,7 @@ class Request {
         }
       }).catchError((e) {
         failureCount++;
-        if (e == DioExceptionType.cancel) {
+        if (e is DioException && e.type == DioExceptionType.cancel) {
           completer.complete(Result.error("cancelled"));
         }
       });

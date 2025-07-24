@@ -28,10 +28,9 @@ class AppLocalizations {
   static const AppLocalizationDelegate delegate = AppLocalizationDelegate();
 
   static Future<AppLocalizations> load(Locale locale) {
-    final name =
-        (locale.countryCode?.isEmpty ?? false)
-            ? locale.languageCode
-            : locale.toString();
+    final name = (locale.countryCode?.isEmpty ?? false)
+        ? locale.languageCode
+        : locale.toString();
     final localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
@@ -70,9 +69,9 @@ class AppLocalizations {
     return Intl.message('Direct', name: 'direct', desc: '', args: []);
   }
 
-  /// `Dashboard`
+  /// `Home`
   String get dashboard {
-    return Intl.message('Dashboard', name: 'dashboard', desc: '', args: []);
+    return Intl.message('Home', name: 'dashboard', desc: '', args: []);
   }
 
   /// `Proxies`
@@ -478,6 +477,36 @@ class AppLocalizations {
   /// `Add`
   String get add {
     return Intl.message('Add', name: 'add', desc: '', args: []);
+  }
+
+  /// `Add Profile`
+  String get addProfileTitle {
+    return Intl.message(
+      'Add Profile',
+      name: 'addProfileTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create Profile`
+  String get createProfileText {
+    return Intl.message(
+      'Create Profile',
+      name: 'createProfileText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit Profile`
+  String get editProfileTitle {
+    return Intl.message(
+      'Edit Profile',
+      name: 'editProfileTitle',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Save`
@@ -930,10 +959,10 @@ class AppLocalizations {
     );
   }
 
-  /// `A multi-platform proxy client based on ClashMeta, simple and easy to use, open-source and ad-free.`
+  /// `A multi-platform proxy client based on the FlClash code (ClashMeta), simple and easy to use, open-source and ad-free.`
   String get desc {
     return Intl.message(
-      'A multi-platform proxy client based on ClashMeta, simple and easy to use, open-source and ad-free.',
+      'A multi-platform proxy client based on the FlClash code (ClashMeta), simple and easy to use, open-source and ad-free.',
       name: 'desc',
       desc: '',
       args: [],
@@ -985,10 +1014,10 @@ class AppLocalizations {
     );
   }
 
-  /// `The current proxy group cannot be selected.`
+  /// `The current proxy group cannot be selected`
   String get notSelectedTip {
     return Intl.message(
-      'The current proxy group cannot be selected.',
+      'The current proxy group cannot be selected',
       name: 'notSelectedTip',
       desc: '',
       args: [],
@@ -1595,11 +1624,11 @@ class AppLocalizations {
     );
   }
 
-  /// `Other contributors`
-  String get otherContributors {
+  /// `Contributors`
+  String get Contributors {
     return Intl.message(
-      'Other contributors',
-      name: 'otherContributors',
+      'Contributors',
+      name: 'Contributors',
       desc: '',
       args: [],
     );
@@ -2235,10 +2264,10 @@ class AppLocalizations {
     );
   }
 
-  /// `Please press the keyboard.`
+  /// `Please press the keyboard`
   String get pressKeyboard {
     return Intl.message(
-      'Please press the keyboard.',
+      'Please press the keyboard',
       name: 'pressKeyboard',
       desc: '',
       args: [],
@@ -2845,10 +2874,10 @@ class AppLocalizations {
     );
   }
 
-  /// `Developer mode is enabled.`
+  /// `Developer mode is enabled`
   String get developerModeEnableTip {
     return Intl.message(
-      'Developer mode is enabled.',
+      'Developer mode is enabled',
       name: 'developerModeEnableTip',
       desc: '',
       args: [],
@@ -2865,10 +2894,10 @@ class AppLocalizations {
     );
   }
 
-  /// `This is a message.`
+  /// `This is a message`
   String get messageTestTip {
     return Intl.message(
-      'This is a message.',
+      'This is a message',
       name: 'messageTestTip',
       desc: '',
       args: [],
@@ -2995,33 +3024,33 @@ class AppLocalizations {
     );
   }
 
-  /// `Are you sure you want to delete the current {label}?`
-  String deleteTip(Object label) {
+  /// `Are you sure you want to delete the current profile?`
+  String get deleteTip {
     return Intl.message(
-      'Are you sure you want to delete the current $label?',
+      'Are you sure you want to delete the current profile?',
       name: 'deleteTip',
       desc: '',
-      args: [label],
+      args: [],
     );
   }
 
-  /// `Are you sure you want to delete the selected {label}?`
-  String deleteMultipTip(Object label) {
+  /// `Are you sure you want to delete the selected profiles?`
+  String get deleteMultipTip {
     return Intl.message(
-      'Are you sure you want to delete the selected $label?',
+      'Are you sure you want to delete the selected profiles?',
       name: 'deleteMultipTip',
       desc: '',
-      args: [label],
+      args: [],
     );
   }
 
-  /// `No {label} at the moment`
-  String nullTip(Object label) {
+  /// `Nothing here yet`
+  String get emptyStateMessage {
     return Intl.message(
-      'No $label at the moment',
-      name: 'nullTip',
+      'Nothing here yet',
+      name: 'emptyStateMessage',
       desc: '',
-      args: [label],
+      args: [],
     );
   }
 
@@ -3147,9 +3176,7 @@ class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {
   List<Locale> get supportedLocales {
     return const <Locale>[
       Locale.fromSubtags(languageCode: 'en'),
-      Locale.fromSubtags(languageCode: 'ja'),
       Locale.fromSubtags(languageCode: 'ru'),
-      Locale.fromSubtags(languageCode: 'zh', countryCode: 'CN'),
     ];
   }
 

@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:fl_clash/enum/enum.dart';
-import 'package:fl_clash/models/models.dart';
+import 'package:flowvy/enum/enum.dart';
+import 'package:flowvy/models/models.dart';
 import 'package:flutter/foundation.dart';
 
 class ClashMessage {

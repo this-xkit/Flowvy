@@ -18,7 +18,7 @@ import androidx.core.content.pm.ShortcutInfoCompat
 import androidx.core.content.pm.ShortcutManagerCompat
 import androidx.core.graphics.drawable.IconCompat
 import com.android.tools.smali.dexlib2.dexbacked.DexBackedDexFile
-import com.follow.clash.FlClashApplication
+import com.follow.clash.FlowvyApplication
 import com.follow.clash.GlobalState
 import com.follow.clash.R
 import com.follow.clash.extensions.awaitResult
@@ -124,18 +124,18 @@ class AppPlugin : FlutterPlugin, MethodChannel.MethodCallHandler, ActivityAware 
     }
 
     private fun initShortcuts(label: String) {
-        val shortcut = ShortcutInfoCompat.Builder(FlClashApplication.getAppContext(), "toggle")
+        val shortcut = ShortcutInfoCompat.Builder(FlowvyApplication.getAppContext(), "toggle")
             .setShortLabel(label)
             .setIcon(
                 IconCompat.createWithResource(
-                    FlClashApplication.getAppContext(),
+                    FlowvyApplication.getAppContext(),
                     R.mipmap.ic_launcher_round
                 )
             )
-            .setIntent(FlClashApplication.getAppContext().getActionIntent("CHANGE"))
+            .setIntent(FlowvyApplication.getAppContext().getActionIntent("CHANGE"))
             .build()
         ShortcutManagerCompat.setDynamicShortcuts(
-            FlClashApplication.getAppContext(),
+            FlowvyApplication.getAppContext(),
             listOf(shortcut)
         )
     }
@@ -147,7 +147,7 @@ class AppPlugin : FlutterPlugin, MethodChannel.MethodCallHandler, ActivityAware 
 
     private fun tip(message: String?) {
         if (GlobalState.flutterEngine == null) {
-            Toast.makeText(FlClashApplication.getAppContext(), message, Toast.LENGTH_LONG).show()
+            Toast.makeText(FlowvyApplication.getAppContext(), message, Toast.LENGTH_LONG).show()
         }
     }
 
@@ -196,7 +196,7 @@ class AppPlugin : FlutterPlugin, MethodChannel.MethodCallHandler, ActivityAware 
                         }
                         if (iconMap["default"] == null) {
                             iconMap["default"] =
-                                FlClashApplication.getAppContext().packageManager?.defaultActivityIcon?.getBase64()
+                                FlowvyApplication.getAppContext().packageManager?.defaultActivityIcon?.getBase64()
                         }
                         result.success(iconMap["default"])
                         return@launch
@@ -225,8 +225,8 @@ class AppPlugin : FlutterPlugin, MethodChannel.MethodCallHandler, ActivityAware 
     private fun openFile(path: String) {
         val file = File(path)
         val uri = FileProvider.getUriForFile(
-            FlClashApplication.getAppContext(),
-            "${FlClashApplication.getAppContext().packageName}.fileProvider",
+            FlowvyApplication.getAppContext(),
+            "${FlowvyApplication.getAppContext().packageName}.fileProvider",
             file
         )
 
@@ -238,13 +238,13 @@ class AppPlugin : FlutterPlugin, MethodChannel.MethodCallHandler, ActivityAware 
         val flags =
             Intent.FLAG_GRANT_WRITE_URI_PERMISSION or Intent.FLAG_GRANT_READ_URI_PERMISSION
 
-        val resInfoList = FlClashApplication.getAppContext().packageManager.queryIntentActivities(
+        val resInfoList = FlowvyApplication.getAppContext().packageManager.queryIntentActivities(
             intent, PackageManager.MATCH_DEFAULT_ONLY
         )
 
         for (resolveInfo in resInfoList) {
             val packageName = resolveInfo.activityInfo.packageName
-            FlClashApplication.getAppContext().grantUriPermission(
+            FlowvyApplication.getAppContext().grantUriPermission(
                 packageName,
                 uri,
                 flags
@@ -259,7 +259,7 @@ class AppPlugin : FlutterPlugin, MethodChannel.MethodCallHandler, ActivityAware 
     }
 
     private fun updateExcludeFromRecents(value: Boolean?) {
-        val am = getSystemService(FlClashApplication.getAppContext(), ActivityManager::class.java)
+        val am = getSystemService(FlowvyApplication.getAppContext(), ActivityManager::class.java)
         val task = am?.appTasks?.firstOrNull {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                 it.taskInfo.taskId == activityRef?.get()?.taskId
@@ -276,7 +276,7 @@ class AppPlugin : FlutterPlugin, MethodChannel.MethodCallHandler, ActivityAware 
     }
 
     private suspend fun getPackageIcon(packageName: String): String? {
-        val packageManager = FlClashApplication.getAppContext().packageManager
+        val packageManager = FlowvyApplication.getAppContext().packageManager
         if (iconMap[packageName] == null) {
             iconMap[packageName] = try {
                 packageManager?.getApplicationIcon(packageName)?.getBase64()
@@ -289,11 +289,11 @@ class AppPlugin : FlutterPlugin, MethodChannel.MethodCallHandler, ActivityAware 
     }
 
     private fun getPackages(): List<Package> {
-        val packageManager = FlClashApplication.getAppContext().packageManager
+        val packageManager = FlowvyApplication.getAppContext().packageManager
         if (packages.isNotEmpty()) return packages
         packageManager?.getInstalledPackages(PackageManager.GET_META_DATA or PackageManager.GET_PERMISSIONS)
             ?.filter {
-                it.packageName != FlClashApplication.getAppContext().packageName || it.packageName == "android"
+                it.packageName != FlowvyApplication.getAppContext().packageName || it.packageName == "android"
 
             }?.map {
                 Package(
@@ -323,7 +323,7 @@ class AppPlugin : FlutterPlugin, MethodChannel.MethodCallHandler, ActivityAware 
 
     fun requestVpnPermission(callBack: () -> Unit) {
         vpnCallBack = callBack
-        val intent = VpnService.prepare(FlClashApplication.getAppContext())
+        val intent = VpnService.prepare(FlowvyApplication.getAppContext())
         if (intent != null) {
             activityRef?.get()?.startActivityForResult(intent, VPN_PERMISSION_REQUEST_CODE)
             return
@@ -334,7 +334,7 @@ class AppPlugin : FlutterPlugin, MethodChannel.MethodCallHandler, ActivityAware 
     fun requestNotificationsPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             val permission = ContextCompat.checkSelfPermission(
-                FlClashApplication.getAppContext(),
+                FlowvyApplication.getAppContext(),
                 Manifest.permission.POST_NOTIFICATIONS
             )
             if (permission != PackageManager.PERMISSION_GRANTED) {
@@ -359,7 +359,7 @@ class AppPlugin : FlutterPlugin, MethodChannel.MethodCallHandler, ActivityAware 
     }
 
     private fun isChinaPackage(packageName: String): Boolean {
-        val packageManager = FlClashApplication.getAppContext().packageManager ?: return false
+        val packageManager = FlowvyApplication.getAppContext().packageManager ?: return false
         skipPrefixList.forEach {
             if (packageName == it || packageName.startsWith("$it.")) return false
         }

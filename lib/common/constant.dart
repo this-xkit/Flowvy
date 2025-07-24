@@ -3,18 +3,18 @@ import 'dart:math';
 import 'dart:ui';
 
 import 'package:collection/collection.dart';
-import 'package:fl_clash/common/common.dart';
-import 'package:fl_clash/enum/enum.dart';
-import 'package:fl_clash/models/models.dart';
+import 'package:flowvy/common/common.dart';
+import 'package:flowvy/enum/enum.dart';
+import 'package:flowvy/models/models.dart';
 import 'package:flutter/material.dart';
 
-const appName = "FlClash";
-const appHelperService = "FlClashHelperService";
+const appName = "Flowvy";
+const appHelperService = "FlowvyHelperService";
 const coreName = "clash.meta";
 const browserUa =
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36";
 const packageName = "com.follow.clash";
-final unixSocketPath = "/tmp/FlClashSocket_${Random().nextInt(10000)}.sock";
+final unixSocketPath = "/tmp/FlowvySocket_${Random().nextInt(10000)}.sock";
 const helperPort = 47890;
 const maxTextScale = 1.4;
 const minTextScale = 0.8;
@@ -90,9 +90,9 @@ double getWidgetHeight(num lines) {
 
 const maxLength = 150;
 
-final mainIsolate = "FlClashMainIsolate";
+final mainIsolate = "FlowvyMainIsolate";
 
-final serviceIsolate = "FlClashServiceIsolate";
+final serviceIsolate = "FlowvyServiceIsolate";
 
 const defaultPrimaryColors = [
   0xFF795548,

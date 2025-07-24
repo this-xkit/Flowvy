@@ -2,10 +2,10 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:fl_clash/clash/interface.dart';
-import 'package:fl_clash/common/common.dart';
-import 'package:fl_clash/models/core.dart';
-import 'package:fl_clash/state.dart';
+import 'package:flowvy/clash/interface.dart';
+import 'package:flowvy/common/common.dart';
+import 'package:flowvy/models/core.dart';
+import 'package:flowvy/state.dart';
 
 class ClashService extends ClashHandlerInterface {
   static ClashService? _instance;

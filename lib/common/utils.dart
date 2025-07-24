@@ -3,14 +3,37 @@ import 'dart:io';
 import 'dart:math';
 import 'dart:ui';
 
-import 'package:fl_clash/common/common.dart';
-import 'package:fl_clash/enum/enum.dart';
+import 'package:device_info_plus/device_info_plus.dart';
+import 'package:flowvy/common/common.dart';
+import 'package:flowvy/enum/enum.dart';
+import 'package:flowvy/state.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lpinyin/lpinyin.dart';
 
 class Utils {
+  Future<Map<String, String>> getDeviceHeaders() async {
+    final headers = <String, String>{};
+
+    headers['user-agent'] = 'Mihomo/${globalState.ua}';
+
+    if (Platform.isWindows) {
+      final deviceInfo = DeviceInfoPlugin();
+      final windowsInfo = await deviceInfo.windowsInfo;
+
+      final hwid = windowsInfo.deviceId;
+      if (hwid.isNotEmpty) {
+        headers['x-hwid'] = hwid;
+      }
+      headers['x-device-os'] = windowsInfo.productName;
+      headers['x-ver-os'] = windowsInfo.displayVersion;
+      headers['x-device-model'] = windowsInfo.computerName;
+    }
+
+    return headers;
+  }
+
   Color? getDelayColor(int? delay) {
     if (delay == null) return null;
     if (delay < 0) return Colors.red;
@@ -196,8 +219,8 @@ class Utils {
         return Uri.decodeComponent(res[1]);
       }
     }
-    final fileNameKey = parameters.keys
-        .firstWhere((key) => key == "filename", orElse: () => "");
+    final fileNameKey =
+        parameters.keys.firstWhere((key) => key == "filename", orElse: () => "");
     if (fileNameKey.isEmpty) return null;
     return parameters[fileNameKey];
   }
@@ -252,10 +275,10 @@ class Utils {
 
   _createPrimarySwatch(Color color) {
     final Map<int, Color> swatch = <int, Color>{};
-    final int a = color.alpha8bit;
-    final int r = color.red8bit;
-    final int g = color.green8bit;
-    final int b = color.blue8bit;
+    final int a = color.alpha;
+    final int r = color.red;
+    final int g = color.green;
+    final int b = color.blue;
     for (final int strength in _indexPrimary) {
       final double ds = 0.5 - strength / 1000;
       swatch[strength] = Color.fromARGB(
@@ -273,7 +296,7 @@ class Utils {
     swatch[700] = swatch[700]!.darken(2);
     swatch[800] = swatch[800]!.darken(3);
     swatch[900] = swatch[900]!.darken(4);
-    return MaterialColor(color.value32bit, swatch);
+    return MaterialColor(color.value, swatch);
   }
 
   List<Color> getMaterialColorShades(Color color) {
