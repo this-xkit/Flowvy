@@ -12,7 +12,8 @@ class MethodChannelProxy extends ProxyPlatform {
   MethodChannelProxy();
 
   @override
-  Future<bool?> startProxy(int port, List<String> bypassDomain) async {
+  // ---> ИЗМЕНЕНИЕ ЗДЕСЬ: bypassDomain теперь в квадратных скобках <---
+  Future<bool?> startProxy(int port, [List<String> bypassDomain = const []]) async {
     return await methodChannel.invokeMethod<bool>("StartProxy", {
       'port': port,
       'bypassDomain': bypassDomain,
@@ -22,5 +23,11 @@ class MethodChannelProxy extends ProxyPlatform {
   @override
   Future<bool?> stopProxy() async {
     return await methodChannel.invokeMethod<bool>("StopProxy");
+  }
+  
+  // Мы также должны реализовать новый метод здесь
+  @override
+  Future<bool?> stopService() async {
+    return await methodChannel.invokeMethod<bool>('stopService');
   }
 }

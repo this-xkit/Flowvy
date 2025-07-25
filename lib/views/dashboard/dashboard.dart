@@ -56,6 +56,7 @@ class _DashboardViewState extends ConsumerState<DashboardView> with PageMixin {
     );
   }
 
+  // --- Блок actions с исправленной подсказкой ---
   @override
   List<Widget> get actions => [
         _buildIsEdit((isEdit) {
@@ -75,20 +76,18 @@ class _DashboardViewState extends ConsumerState<DashboardView> with PageMixin {
                     icon: Icon(
                       Icons.add_circle,
                     ),
+                    tooltip: appLocalizations.add,
                   ),
                 )
               : SizedBox();
         }),
-        IconButton(
-          icon: _buildIsEdit((isEdit) {
-            return isEdit
-                ? Icon(Icons.save)
-                : Icon(
-                    Icons.edit,
-                  );
-          }),
-          onPressed: _handleUpdateIsEdit,
-        ),
+        _buildIsEdit((isEdit) {
+          return IconButton(
+            icon: isEdit ? const Icon(Icons.save) : const Icon(Icons.edit),
+            tooltip: isEdit ? appLocalizations.save : appLocalizations.edit,
+            onPressed: _handleUpdateIsEdit,
+          );
+        }),
       ];
 
   _showAddWidgetsModal() {

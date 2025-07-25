@@ -16,6 +16,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path/path.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:http/http.dart' as http;
 
 import 'common/common.dart';
 import 'models/models.dart';
@@ -439,20 +440,32 @@ class AppController {
     _ref.read(backBlockProvider.notifier).value = false;
   }
 
-  handleExit() async {
-    Future.delayed(commonDuration, () {
-      system.exit();
-    });
+  // lib/controller.dart
+
+handleExit() async {
+  Future.delayed(commonDuration, () {
+    system.exit();
+  });
+  try {
+    await savePreferences();
+    await system.setMacOSDns(true);
+    await proxy?.stopProxy();
+    await clashCore.shutdown();
+    await clashService?.destroy();
+
+    // ---> НАША НОВАЯ КОМАНДА <---
+    // Отправляем HTTP запрос службе, чтобы она сама себя остановила
     try {
-      await savePreferences();
-      await system.setMacOSDns(true);
-      await proxy?.stopProxy();
-      await clashCore.shutdown();
-      await clashService?.destroy();
-    } finally {
-      system.exit();
+      final url = Uri.parse('http://127.0.0.1:47890/shutdown');
+      await http.post(url).timeout(const Duration(seconds: 1));
+    } catch (e) {
+      // Игнорируем ошибки, т.к. служба может уже не отвечать
     }
+
+  } finally {
+    system.exit();
   }
+}
 
   Future handleClear() async {
     await preferences.clearPreferences();

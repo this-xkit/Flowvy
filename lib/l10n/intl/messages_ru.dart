@@ -177,6 +177,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Включение приведет к потере части функциональности приложения, но обеспечит полную поддержку Clash",
     ),
     "confirm": MessageLookupByLibrary.simpleMessage("Ок"),
+    "connect": MessageLookupByLibrary.simpleMessage("Подключиться"),
     "connections": MessageLookupByLibrary.simpleMessage("Соединения"),
     "connectionsDesc": MessageLookupByLibrary.simpleMessage(
       "Просмотр текущих данных о соединениях",
@@ -222,6 +223,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "deleteTip": MessageLookupByLibrary.simpleMessage(
       "Вы уверены, что хотите удалить текущую подписку?",
     ),
+    "delete_connections": MessageLookupByLibrary.simpleMessage("Очистить"),
     "desc": MessageLookupByLibrary.simpleMessage(
       "Мультиплатформенный прокси‑клиент на основе кода FlClash (ClashMeta), простой и удобный в использовании, с открытым исходным кодом и без рекламы",
     ),
@@ -432,6 +434,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "monochromeScheme": MessageLookupByLibrary.simpleMessage("Монохром"),
     "months": MessageLookupByLibrary.simpleMessage("Месяцев"),
     "more": MessageLookupByLibrary.simpleMessage("Еще"),
+    "more_vert": MessageLookupByLibrary.simpleMessage("Ещё"),
     "name": MessageLookupByLibrary.simpleMessage("Имя"),
     "nameSort": MessageLookupByLibrary.simpleMessage("Сортировка по имени"),
     "nameserver": MessageLookupByLibrary.simpleMessage("Сервер имен"),
@@ -506,6 +509,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "palette": MessageLookupByLibrary.simpleMessage("Палитра"),
     "password": MessageLookupByLibrary.simpleMessage("Пароль"),
     "paste": MessageLookupByLibrary.simpleMessage("Вставить"),
+    "ping": MessageLookupByLibrary.simpleMessage("Пинг"),
     "pleaseBindWebDAV": MessageLookupByLibrary.simpleMessage(
       "Пожалуйста, привяжите WebDAV",
     ),
@@ -649,7 +653,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "saveTip": MessageLookupByLibrary.simpleMessage(
       "Вы уверены, что хотите сохранить?",
     ),
-    "script": MessageLookupByLibrary.simpleMessage("Скрипт"),
+    "script": MessageLookupByLibrary.simpleMessage("Скрипты"),
     "search": MessageLookupByLibrary.simpleMessage("Поиск"),
     "seconds": MessageLookupByLibrary.simpleMessage("Секунд"),
     "selectAll": MessageLookupByLibrary.simpleMessage("Выбрать все"),

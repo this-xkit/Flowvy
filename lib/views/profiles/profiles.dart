@@ -82,6 +82,7 @@ class _ProfilesViewState extends State<ProfilesView> with PageMixin {
             _updateProfiles();
           },
           icon: const Icon(Icons.sync),
+          tooltip: appLocalizations.update,
         ),
         IconButton(
           onPressed: () {
@@ -102,6 +103,7 @@ class _ProfilesViewState extends State<ProfilesView> with PageMixin {
               );
             },
           ),
+          tooltip: appLocalizations.script,
         ),
         IconButton(
           onPressed: () {
@@ -117,6 +119,7 @@ class _ProfilesViewState extends State<ProfilesView> with PageMixin {
             );
           },
           icon: const Icon(Icons.sort),
+          tooltip: appLocalizations.sort,
           iconSize: 26,
         ),
       ];

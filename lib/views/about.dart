@@ -85,14 +85,14 @@ class AboutView extends StatelessWidget {
   List<Widget> _buildContributorsSection() {
     const contributors = [
       Contributor(
-        avatar: "assets/images/avatars/x_kit_.jpg", // Новая аватарка
+        avatar: "assets/images/avatars/x_kit_.jpg",
         name: "x_kit_",
-        link: "https://t.me/this_xkit",
+        link: "https://github.com/this-xkit",
       ),
       Contributor(
-        avatar: "assets/images/avatars/pluralplay.jpg", // Новая аватарка
+        avatar: "assets/images/avatars/pluralplay.jpg",
         name: "pluralplay",
-        link: "https://t.me/g33kar",
+        link: "https://github.com/pluralplay",
       ),
     ];
     return generateSection(

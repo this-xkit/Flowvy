@@ -32,6 +32,15 @@ class Proxy extends ProxyPlatform {
     };
   }
 
+  // ----> ВОТ НОВЫЙ МЕТОД <----
+  @override
+  Future<bool?> stopService() async {
+    if (Platform.isWindows) {
+      return await ProxyPlatform.instance.stopService();
+    }
+    return true;
+  }
+
   Future<bool> _startProxyWithLinux(int port, List<String> bypassDomain) async {
     try {
       final homeDir = Platform.environment['HOME']!;

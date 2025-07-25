@@ -40,6 +40,7 @@ class _ConnectionsViewState extends ConsumerState<ConnectionsView>
             );
           },
           icon: const Icon(Icons.delete_sweep_outlined),
+          tooltip: appLocalizations.delete_connections,
         ),
       ];
 

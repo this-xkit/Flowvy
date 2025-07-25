@@ -2,6 +2,7 @@ import 'package:flowvy/common/common.dart';
 import 'package:flowvy/enum/enum.dart';
 import 'package:flowvy/models/common.dart';
 import 'package:flowvy/providers/providers.dart';
+import 'package:flowvy/views/dashboard/widgets/start_button.dart';
 import 'package:flowvy/views/proxies/list.dart';
 import 'package:flowvy/views/proxies/providers.dart';
 import 'package:flowvy/widgets/widgets.dart';
@@ -27,13 +28,11 @@ class _ProxiesViewState extends ConsumerState<ProxiesView> with PageMixin {
   get actions => [
         if (_isTab)
           IconButton(
-            onPressed: () {
-              _proxiesTabKey.currentState?.scrollToGroupSelected();
+            icon: const Icon(Icons.speed_outlined),
+            tooltip: appLocalizations.ping,
+            onPressed: () async {
+              await _proxiesTabKey.currentState?.delayTestCurrentGroup();
             },
-            icon: Icon(
-              Icons.adjust,
-              weight: 1,
-            ),
           ),
         CommonPopupBox(
           targetBuilder: (open) {
@@ -46,6 +45,7 @@ class _ProxiesViewState extends ConsumerState<ProxiesView> with PageMixin {
               icon: Icon(
                 Icons.more_vert,
               ),
+              tooltip: appLocalizations.more_vert,
             );
           },
           popup: CommonPopupMenu(
@@ -106,6 +106,10 @@ class _ProxiesViewState extends ConsumerState<ProxiesView> with PageMixin {
         )
       ];
 
+  // <--- ДОБАВЛЕНА КНОПКА ПОДКЛЮЧЕНИЯ
+  @override
+  Widget? get floatingActionButton => const StartButton();
+
   @override
   get onSearch => (value) {
         ref.read(proxiesQueryProvider.notifier).value = value;
@@ -120,15 +124,6 @@ class _ProxiesViewState extends ConsumerState<ProxiesView> with PageMixin {
       }
     });
   }
-
-  @override
-  get floatingActionButton => _isTab
-      ? DelayTestButton(
-          onClick: () async {
-            await _proxiesTabKey.currentState?.delayTestCurrentGroup();
-          },
-        )
-      : null;
 
   @override
   void initState() {

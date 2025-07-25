@@ -99,6 +99,16 @@ class AppLocalizations {
     return Intl.message('Logs', name: 'logs', desc: '', args: []);
   }
 
+  /// `Ping`
+  String get ping {
+    return Intl.message('Ping', name: 'ping', desc: '', args: []);
+  }
+
+  /// `More options`
+  String get more_vert {
+    return Intl.message('More options', name: 'more_vert', desc: '', args: []);
+  }
+
   /// `Log capture records`
   String get logsDesc {
     return Intl.message(
@@ -517,6 +527,16 @@ class AppLocalizations {
   /// `Delete`
   String get delete {
     return Intl.message('Delete', name: 'delete', desc: '', args: []);
+  }
+
+  /// `Clear`
+  String get delete_connections {
+    return Intl.message(
+      'Clear',
+      name: 'delete_connections',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Years`
@@ -1457,6 +1477,11 @@ class AppLocalizations {
       desc: '',
       args: [],
     );
+  }
+
+  /// `Connect`
+  String get connect {
+    return Intl.message('Connect', name: 'connect', desc: '', args: []);
   }
 
   /// `Intranet IP`

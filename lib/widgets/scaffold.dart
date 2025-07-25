@@ -301,6 +301,7 @@ class CommonScaffoldState extends State<CommonScaffold> {
               );
             },
             icon: Icon(Icons.search),
+            tooltip: appLocalizations.search,
           ),
         ...actions
       ],

@@ -169,6 +169,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Opening it will lose part of its application ability and gain the support of full amount of Clash.",
     ),
     "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
+    "connect": MessageLookupByLibrary.simpleMessage("Connect"),
     "connections": MessageLookupByLibrary.simpleMessage("Connections"),
     "connectionsDesc": MessageLookupByLibrary.simpleMessage(
       "View current connections data",
@@ -210,6 +211,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "deleteTip": MessageLookupByLibrary.simpleMessage(
       "Are you sure you want to delete the current profile?",
     ),
+    "delete_connections": MessageLookupByLibrary.simpleMessage("Clear"),
     "desc": MessageLookupByLibrary.simpleMessage(
       "A multi-platform proxy client based on the FlClash code (ClashMeta), simple and easy to use, open-source and ad-free.",
     ),
@@ -396,6 +398,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "monochromeScheme": MessageLookupByLibrary.simpleMessage("Monochrome"),
     "months": MessageLookupByLibrary.simpleMessage("Months"),
     "more": MessageLookupByLibrary.simpleMessage("More"),
+    "more_vert": MessageLookupByLibrary.simpleMessage("More options"),
     "name": MessageLookupByLibrary.simpleMessage("Name"),
     "nameSort": MessageLookupByLibrary.simpleMessage("Sort by name"),
     "nameserver": MessageLookupByLibrary.simpleMessage("Nameserver"),
@@ -468,6 +471,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "palette": MessageLookupByLibrary.simpleMessage("Palette"),
     "password": MessageLookupByLibrary.simpleMessage("Password"),
     "paste": MessageLookupByLibrary.simpleMessage("Paste"),
+    "ping": MessageLookupByLibrary.simpleMessage("Ping"),
     "pleaseBindWebDAV": MessageLookupByLibrary.simpleMessage(
       "Please bind WebDAV",
     ),
