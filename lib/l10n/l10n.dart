@@ -1334,6 +1334,26 @@ class AppLocalizations {
     return Intl.message('General', name: 'general', desc: '', args: []);
   }
 
+  /// `Manual HWID modification detected`
+  String get tamperError {
+    return Intl.message(
+      'Manual HWID modification detected',
+      name: 'tamperError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Operation aborted`
+  String get updateAborted {
+    return Intl.message(
+      'Operation aborted',
+      name: 'updateAborted',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Attach HTTP proxy to VpnService`
   String get vpnSystemProxyDesc {
     return Intl.message(

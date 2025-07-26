@@ -172,6 +172,8 @@
   "ipv6Desc": "При включении будет возможно получать IPv6 трафик",
   "app": "Приложение",
   "general": "Общие",
+  "tamperError": "Обнаружено ручное изменение HWID",
+  "updateAborted": "Операция прервана",
   "vpnSystemProxyDesc": "Прикрепить HTTP-прокси к VpnService",
   "systemProxyDesc": "Прикрепить HTTP-прокси к VpnService",
   "unifiedDelay": "Унифицированная задержка",

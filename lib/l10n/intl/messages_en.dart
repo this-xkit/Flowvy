@@ -651,6 +651,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "tabAnimationDesc": MessageLookupByLibrary.simpleMessage(
       "Effective only in mobile view",
     ),
+    "tamperError": MessageLookupByLibrary.simpleMessage(
+      "Manual HWID modification detected",
+    ),
     "tcpConcurrent": MessageLookupByLibrary.simpleMessage("TCP concurrent"),
     "tcpConcurrentDesc": MessageLookupByLibrary.simpleMessage(
       "Enabling it will allow TCP concurrency",
@@ -688,6 +691,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "unknown": MessageLookupByLibrary.simpleMessage("Unknown"),
     "unnamed": MessageLookupByLibrary.simpleMessage("Unnamed"),
     "update": MessageLookupByLibrary.simpleMessage("Update"),
+    "updateAborted": MessageLookupByLibrary.simpleMessage("Operation aborted"),
     "upload": MessageLookupByLibrary.simpleMessage("Upload"),
     "url": MessageLookupByLibrary.simpleMessage("URL"),
     "urlDesc": MessageLookupByLibrary.simpleMessage(

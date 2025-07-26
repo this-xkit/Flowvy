@@ -8,21 +8,21 @@
             "name": "Flowvy",
             "request": "launch",
             "type": "dart",
-            "program": "lib/main.dart" // <--- ДОБАВЛЕНО
+            "program": "lib/main.dart"
         },
         {
             "name": "Flowvy (profile mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile",
-            "program": "lib/main.dart" // <--- ДОБАВЛЕНО
+            "program": "lib/main.dart"
         },
         {
             "name": "Flowvy (release mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release",
-            "program": "lib/main.dart" // <--- ДОБАВЛЕНО
+            "program": "lib/main.dart"
         },
         {
             "name": "flutter_distributor",

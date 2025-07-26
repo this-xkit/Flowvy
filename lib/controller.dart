@@ -77,6 +77,33 @@ class AppController {
 
   restartCore() async {
     commonPrint.log("restart core");
+
+    try {
+      final String configPath = await appPath.getProfilePath(
+        _ref.read(currentProfileIdProvider)!,
+      );
+      final configFile = File(configPath);
+
+      if (await configFile.exists()) {
+        final String configContent = await configFile.readAsString();
+        final bool isTampered = isConfigTampered(configContent);
+
+        if (isTampered) {
+          if (context.mounted) {
+            globalState.showMessage(
+              title: appLocalizations.updateAborted,
+              message: TextSpan(text: appLocalizations.tamperError),
+              cancelable: false,
+              confirmText: appLocalizations.confirm,
+            );
+          }
+          return;
+        }
+      }
+    } catch (e) {
+      commonPrint.log("Ошибка во время проверки конфига: $e");
+    }
+
     await clashService?.reStart();
     await _initCore();
     if (_ref.read(runTimeProvider.notifier).isStart) {
@@ -440,32 +467,27 @@ class AppController {
     _ref.read(backBlockProvider.notifier).value = false;
   }
 
-  // lib/controller.dart
-
-handleExit() async {
-  Future.delayed(commonDuration, () {
-    system.exit();
-  });
-  try {
-    await savePreferences();
-    await system.setMacOSDns(true);
-    await proxy?.stopProxy();
-    await clashCore.shutdown();
-    await clashService?.destroy();
-
-    // ---> НАША НОВАЯ КОМАНДА <---
-    // Отправляем HTTP запрос службе, чтобы она сама себя остановила
+  handleExit() async {
+    Future.delayed(commonDuration, () {
+      system.exit();
+    });
     try {
-      final url = Uri.parse('http://127.0.0.1:47890/shutdown');
-      await http.post(url).timeout(const Duration(seconds: 1));
-    } catch (e) {
-      // Игнорируем ошибки, т.к. служба может уже не отвечать
-    }
+      await savePreferences();
+      await system.setMacOSDns(true);
+      await proxy?.stopProxy();
+      await clashCore.shutdown();
+      await clashService?.destroy();
 
-  } finally {
-    system.exit();
+      try {
+        final url = Uri.parse('http://127.0.0.1:47890/shutdown');
+        await http.post(url).timeout(const Duration(seconds: 1));
+      } catch (e) {
+        // Ignore the errors since the service might no longer be responding.
+      }
+    } finally {
+      system.exit();
+    }
   }
-}
 
   Future handleClear() async {
     await preferences.clearPreferences();
@@ -622,7 +644,8 @@ handleExit() async {
                 ),
               ),
               TextSpan(
-                  text: appLocalizations.createProfileText,),
+                text: appLocalizations.createProfileText,
+              ),
             ],
           ),
         );

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
 import 'dart:ui';
@@ -11,6 +12,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lpinyin/lpinyin.dart';
+import 'package:yaml/yaml.dart';
 
 class Utils {
   Future<Map<String, String>> getDeviceHeaders() async {
@@ -172,10 +174,6 @@ class Utils {
     }
     final suffix = Platform.isWindows ? "ico" : "png";
     return "assets/images/icon.$suffix";
-    // return switch (brightness) {
-    //   Brightness.dark => "assets/images/icon_white.$suffix",
-    //   Brightness.light => "assets/images/icon_black.$suffix",
-    // };
   }
 
   int compareVersions(String version1, String version2) {
@@ -359,52 +357,6 @@ class Utils {
     );
   }
 
-  // dynamic convertYamlNode(dynamic node) {
-  //   if (node is YamlMap) {
-  //     final map = <String, dynamic>{};
-  //     YamlNode? mergeKeyNode;
-  //     for (final entry in node.nodes.entries) {
-  //       if (entry.key is YamlScalar &&
-  //           (entry.key as YamlScalar).value == '<<') {
-  //         mergeKeyNode = entry.value;
-  //         break;
-  //       }
-  //     }
-  //     if (mergeKeyNode != null) {
-  //       final mergeValue = mergeKeyNode.value;
-  //       if (mergeValue is YamlMap) {
-  //         map.addAll(convertYamlNode(mergeValue) as Map<String, dynamic>);
-  //       } else if (mergeValue is YamlList) {
-  //         for (final node in mergeValue.nodes) {
-  //           if (node.value is YamlMap) {
-  //             map.addAll(convertYamlNode(node.value) as Map<String, dynamic>);
-  //           }
-  //         }
-  //       }
-  //     }
-  //
-  //     node.nodes.forEach((key, value) {
-  //       String stringKey;
-  //       if (key is YamlScalar) {
-  //         stringKey = key.value.toString();
-  //       } else {
-  //         stringKey = key.toString();
-  //       }
-  //       map[stringKey] = convertYamlNode(value.value);
-  //     });
-  //     return map;
-  //   } else if (node is YamlList) {
-  //     final list = <dynamic>[];
-  //     for (final item in node.nodes) {
-  //       list.add(convertYamlNode(item.value));
-  //     }
-  //     return list;
-  //   } else if (node is YamlScalar) {
-  //     return node.value;
-  //   }
-  //   return node;
-  // }
-
   FutureOr<T> handleWatch<T>(Function function) async {
     if (kDebugMode) {
       final stopwatch = Stopwatch()..start();
@@ -415,6 +367,34 @@ class Utils {
     }
     return await function();
   }
+}
+
+bool isConfigTampered(String configContent) {
+  try {
+    final dynamic configData = jsonDecode(jsonEncode(loadYaml(configContent)));
+
+    if (configData is! Map) return false;
+
+    final dynamic providers = configData['proxy-providers'];
+
+    if (providers is Map) {
+      for (var providerKey in providers.keys) {
+        final dynamic providerData = providers[providerKey];
+        if (providerData is Map && providerData.containsKey('header')) {
+          final dynamic headers = providerData['header'];
+          if (headers is Map &&
+              (headers.containsKey('x-hwid') ||
+                  headers.containsKey('X-Hwid'))) {
+            return true;
+          }
+        }
+      }
+    }
+  } catch (e) {
+    return false;
+  }
+
+  return false;
 }
 
 final utils = Utils();

@@ -171,6 +171,8 @@
   "ipv6Desc": "When turned on it will be able to receive IPv6 traffic",
   "app": "App",
   "general": "General",
+  "tamperError": "Manual HWID modification detected",
+  "updateAborted": "Operation aborted",
   "vpnSystemProxyDesc": "Attach HTTP proxy to VpnService",
   "systemProxyDesc": "Attach HTTP proxy to VpnService",
   "unifiedDelay": "Unified delay",

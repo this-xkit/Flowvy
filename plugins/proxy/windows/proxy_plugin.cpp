@@ -190,7 +190,6 @@ namespace proxy
             startProxy(port, bypassDomain);
             result->Success(flutter::EncodableValue(true));
         }
-        // ---> 2. ДОБАВЛЕН БЛОК ДЛЯ ОБРАБОТКИ КОМАНДЫ stopService <---
         else if (method_call.method_name().compare("stopService") == 0)
         {
             SC_HANDLE schSCManager = OpenSCManager(NULL, NULL, SC_MANAGER_ALL_ACCESS);
@@ -207,7 +206,6 @@ namespace proxy
             }
             result->Success(flutter::EncodableValue(true));
         }
-        // ----------------------------------------------------------------
         else
         {
             result->NotImplemented();

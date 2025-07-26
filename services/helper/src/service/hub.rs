@@ -87,11 +87,8 @@ fn stop() -> impl Reply {
     "".to_string()
 }
 
-// ---> 1. ДОБАВЛЕНА НОВАЯ ФУНКЦИЯ <---
 fn shutdown_service() -> impl Reply {
-    // Даем команду всему процессу службы завершиться
     std::process::exit(0);
-    // Ответ не так важен, так как служба все равно закроется
     "Service is shutting down".to_string()
 }
 
@@ -125,10 +122,8 @@ pub async fn run_service() -> anyhow::Result<()> {
 
     let api_logs = warp::get().and(warp::path("logs")).map(|| get_logs());
 
-    // ---> 2. ДОБАВЛЕН НОВЫЙ МАРШРУТ <---
     let api_shutdown = warp::post().and(warp::path("shutdown")).map(|| shutdown_service());
 
-    // ---> 3. ОБНОВЛЕНА СТРОКА С ЗАПУСКОМ СЕРВЕРА <---
     warp::serve(api_ping.or(api_start).or(api_stop).or(api_logs).or(api_shutdown))
         .run(([127, 0, 0, 1], LISTEN_PORT))
         .await;

@@ -697,6 +697,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "tabAnimationDesc": MessageLookupByLibrary.simpleMessage(
       "Работает только в мобильном режиме",
     ),
+    "tamperError": MessageLookupByLibrary.simpleMessage(
+      "Обнаружено ручное изменение HWID",
+    ),
     "tcpConcurrent": MessageLookupByLibrary.simpleMessage("TCP параллелизм"),
     "tcpConcurrentDesc": MessageLookupByLibrary.simpleMessage(
       "Включение позволит использовать параллелизм TCP",
@@ -738,6 +741,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "unknown": MessageLookupByLibrary.simpleMessage("Неизвестно"),
     "unnamed": MessageLookupByLibrary.simpleMessage("Без имени"),
     "update": MessageLookupByLibrary.simpleMessage("Обновить"),
+    "updateAborted": MessageLookupByLibrary.simpleMessage("Операция прервана"),
     "upload": MessageLookupByLibrary.simpleMessage("Отправлено"),
     "url": MessageLookupByLibrary.simpleMessage("URL"),
     "urlDesc": MessageLookupByLibrary.simpleMessage(
