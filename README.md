@@ -60,7 +60,7 @@
 
 ```bash
 # Клонируем репозиторий
-git clone https://github.com/this-xkit/Flowvy
+git clone https://github.com/this-xkit/Flowvy.git
 
 # Переходим в папку проекта
 cd Flowvy
