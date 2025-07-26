@@ -7,4 +7,4 @@ src\service\mod.rs:
 src\service\hub.rs:
 src\service\windows.rs:
 
-# env-dep:TOKEN=6ad927cd9b449e818c6582d5786c58b5e08c9b4b98fbf23ac4400f45247e5bd4
+# env-dep:TOKEN=651f182e50bf2bf45a8098555cc4587cb5b44cdeef1582d4b5a2c71fee4b7845

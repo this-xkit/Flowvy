@@ -12,6 +12,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lpinyin/lpinyin.dart';
+import 'package:material_color_utilities/material_color_utilities.dart';
 import 'package:yaml/yaml.dart';
 
 class Utils {
@@ -257,44 +258,31 @@ class Utils {
     return max((viewWidth / 320).floor(), 1);
   }
 
-  final _indexPrimary = [
-    50,
-    100,
-    200,
-    300,
-    400,
-    500,
-    600,
-    700,
-    800,
-    850,
-    900,
-  ];
+  MaterialColor _createPrimarySwatch(Color color) {
+    final Map<int, Color> swatch = {};
 
-  _createPrimarySwatch(Color color) {
-    final Map<int, Color> swatch = <int, Color>{};
-    final int a = color.alpha;
-    final int r = color.red;
-    final int g = color.green;
-    final int b = color.blue;
-    for (final int strength in _indexPrimary) {
-      final double ds = 0.5 - strength / 1000;
-      swatch[strength] = Color.fromARGB(
-        a,
-        r + ((ds < 0 ? r : (255 - r)) * ds).round(),
-        g + ((ds < 0 ? g : (255 - g)) * ds).round(),
-        b + ((ds < 0 ? b : (255 - b)) * ds).round(),
-      );
-    }
-    swatch[50] = swatch[50]!.lighten(18);
-    swatch[100] = swatch[100]!.lighten(16);
-    swatch[200] = swatch[200]!.lighten(14);
-    swatch[300] = swatch[300]!.lighten(10);
-    swatch[400] = swatch[400]!.lighten(6);
-    swatch[700] = swatch[700]!.darken(2);
-    swatch[800] = swatch[800]!.darken(3);
-    swatch[900] = swatch[900]!.darken(4);
-    return MaterialColor(color.value, swatch);
+    final hct = Hct.fromInt(color.toARGB32());
+    final palette = TonalPalette.of(hct.hue, hct.chroma);
+
+    const Map<int, int> swatchTones = {
+      50: 95,
+      100: 90,
+      200: 80,
+      300: 70,
+      400: 60,
+      500: 50,
+      600: 40,
+      700: 30,
+      800: 20,
+      850: 15,
+      900: 10,
+    };
+
+    swatchTones.forEach((swatchIndex, tone) {
+      swatch[swatchIndex] = Color(palette.get(tone));
+    });
+
+    return MaterialColor(color.toARGB32(), swatch);
   }
 
   List<Color> getMaterialColorShades(Color color) {
