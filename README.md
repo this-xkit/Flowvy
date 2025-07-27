@@ -1,127 +1,108 @@
-<div>
+[![ru](https://img.shields.io/badge/lang-ru-blue)](https://github.com/this-xkit/Flowvy/blob/main/README.md)
+[![en](https://img.shields.io/badge/lang-en-red)](https://github.com/this-xkit/Flowvy/blob/main/README.en.md)
 
-[**简体中文**](README_zh_CN.md)
+# Flowvy
 
-</div>
-
-## FlClash
-
-[![Downloads](https://img.shields.io/github/downloads/chen08209/FlClash/total?style=flat-square&logo=github)](https://github.com/chen08209/FlClash/releases/)[![Last Version](https://img.shields.io/github/release/chen08209/FlClash/all.svg?style=flat-square)](https://github.com/chen08209/FlClash/releases/)[![License](https://img.shields.io/github/license/chen08209/FlClash?style=flat-square)](LICENSE)
-
-[![Channel](https://img.shields.io/badge/Telegram-Channel-blue?style=flat-square&logo=telegram)](https://t.me/FlClash)
-
-A multi-platform proxy client based on ClashMeta, simple and easy to use, open-source and ad-free.
-
-on Desktop:
-<p style="text-align: center;">
-    <img alt="desktop" src="snapshots/desktop.gif">
+<p align="center">
+  <img src="https://github.com/this-xkit/Flowvy/blob/main/assets/images/icon.png" alt="Flowvy Logo" width="150">
 </p>
 
-on Mobile:
-<p style="text-align: center;">
-    <img alt="mobile" src="snapshots/mobile.gif">
+<p align="center">
+  <strong>Современный, мультиплатформенный клиент для Clash.</strong>
+  <br>
+  С акцентом на улучшенный пользовательский опыт и интеграцию с современными панелями управления, такими, как <a href="https://github.com/remnawave/panel">Remnawave</a>.
 </p>
 
-## Features
-
-✈️ Multi-platform: Android, Windows, macOS and Linux
-
-💻 Adaptive multiple screen sizes, Multiple color themes available
-
-💡 Based on Material You Design, [Surfboard](https://github.com/getsurfboard/surfboard)-like UI
-
-☁️ Supports data sync via WebDAV
-
-✨ Support subscription link, Dark mode
-
-## Use
-
-### Linux
-
-⚠️ Make sure to install the following dependencies before using them
-
-   ```bash
-    sudo apt-get install libayatana-appindicator3-dev
-    sudo apt-get install libkeybinder-3.0-dev
-   ```
-
-### Android
-
-Support the following actions
-
-   ```bash
-    com.follow.clash.action.START
-    
-    com.follow.clash.action.STOP
-    
-    com.follow.clash.action.CHANGE
-   ```
-
-## Download
-
-<a href="https://chen08209.github.io/FlClash-fdroid-repo/repo?fingerprint=789D6D32668712EF7672F9E58DEEB15FBD6DCEEC5AE7A4371EA72F2AAE8A12FD"><img alt="Get it on F-Droid" src="snapshots/get-it-on-fdroid.svg" width="200px"/></a> <a href="https://github.com/chen08209/FlClash/releases"><img alt="Get it on GitHub" src="snapshots/get-it-on-github.svg" width="200px"/></a>
-
-## Build
-
-1. Update submodules
-   ```bash
-   git submodule update --init --recursive
-   ```
-
-2. Install `Flutter` and `Golang` environment
-
-3. Build Application
-
-    - android
-
-        1. Install  `Android SDK` ,  `Android NDK`
-
-        2. Set `ANDROID_NDK` environment variables
-
-        3. Run Build script
-
-           ```bash
-           dart .\setup.dart android
-           ```
-
-    - windows
-
-        1. You need a windows client
-
-        2. Install  `Gcc`，`Inno Setup`
-
-        3. Run build script
-
-           ```bash
-           dart .\setup.dart windows --arch <arm64 | amd64>
-           ```
-
-    - linux
-
-        1. You need a linux client
-
-        2. Run build script
-
-           ```bash
-           dart .\setup.dart linux --arch <arm64 | amd64>
-           ```
-
-    - macOS
-
-        1. You need a macOS client
-
-        2. Run build script
-
-           ```bash
-           dart .\setup.dart macos --arch <arm64 | amd64>
-           ```
-
-## Star
-
-The easiest way to support developers is to click on the star (⭐) at the top of the page.
-
-<p style="text-align: center;">
-    <a href="https://api.star-history.com/svg?repos=chen08209/FlClash&Date">
-        <img alt="start" width=50% src="https://api.star-history.com/svg?repos=chen08209/FlClash&Date"/>
-    </a>
+<p align="center">
+  <img src="https://github.com/this-xkit/Flowvy/blob/main/assets/images/screenshot_2.png" alt="Flowvy Screenshot" width="800">
 </p>
+
+## О проекте
+
+**Flowvy** — это глубоко модифицированный форк проекта с открытым исходным кодом [FlClash](https://github.com/chen08209/FlClash), нацеленный на улучшение пользовательского опыта и добавление уникального функционала для продвинутых пользователей.
+
+---
+
+## ✨ Возможности
+
+* **Улучшенная интеграция с панелями:** Встроенная поддержка **HWID** для панелей управления (например, Remnawave).
+* **Динамические анонсы:** Получайте важные сообщения от вашего провайдера (например, об окончании подписки или лимите устройств) прямо в интерфейсе приложения.
+* **Продуманные дефолты:** Кастомизированные настройки "из коробки" для быстрого старта.
+* **Русскоязычная локализация:** Полный перевод интерфейса и установщика.
+
+---
+
+## 🚀 Установка
+
+Готовые сборки для всех платформ можно найти на странице [**Релизов (Releases)**](https://github.com/ТВОЙ_НИК/Flowvy/releases).
+
+---
+
+## 🛠️ Сборка из исходников
+
+Если вы хотите собрать проект самостоятельно, следуйте этим шагам.
+
+### 1. Подготовка окружения
+
+Убедитесь, что у вас установлены все необходимые инструменты:
+
+* [**Flutter SDK**](https://flutter.dev/docs/get-started/install)
+* [**Go**](https://go.dev/dl/)
+* [**Rust**](https://www.rust-lang.org/tools/install)
+* **Git**
+
+А также инструменты для вашей целевой платформы:
+* **Для Windows:** [**Visual Studio**](https://visualstudio.microsoft.com/downloads/) с рабочей нагрузкой **"Desktop development with C++"** и [**Inno Setup**](https://jrsoftware.org/isinfo.php).
+* **Для Android:** **Android SDK** и **Android NDK**.
+* **Для Linux:** `libayatana-appindicator3-dev` и `libkeybinder-3.0-dev`.
+
+### 2. Клонирование репозитория
+
+```bash
+# Клонируем репозиторий
+git clone https://github.com/this-xkit/Flowvy
+
+# Переходим в папку проекта
+cd Flowvy
+
+# Скачиваем ядро Clash.Meta и другие зависимости. Не пропускайте этот шаг!
+git submodule update --init --recursive
+````
+
+### 3\. Установка зависимостей проекта
+
+Перед первой сборкой необходимо скачать все Dart-пакеты:
+
+```bash
+flutter pub get
+```
+
+### 4\. Запуск сборки
+
+Для сборки под конкретную платформу используйте встроенный скрипт `setup.dart`. В большинстве случаев для современных ПК вам нужна архитектура `amd64`.
+
+#### Windows
+
+```bash
+dart .\setup.dart windows --arch <arm64 | amd64>
+```
+
+#### Linux
+
+```bash
+dart .\setup.dart linux --arch <arm64 | amd64>
+```
+
+#### macOS
+
+```bash
+dart .\setup.dart macos --arch <arm64 | amd64>
+```
+
+#### Android
+
+Убедитесь, что настроена переменная окружения `ANDROID_NDK`.
+
+```bash
+dart .\setup.dart android
+```
