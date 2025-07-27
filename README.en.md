@@ -4,82 +4,83 @@
 # Flowvy
 
 <p align="center">
-  <img src="https://github.com/this-xkit/Flowvy/blob/main/assets/images/icon.png" alt="Flowvy Logo" width="100">
+  <img src="https://github.com/this-xkit/Flowvy/blob/main/assets/images/icon.png" alt="Логотип Flowvy" width="100">
 </p>
 
 <p align="center">
-  <strong>A modern, cross-platform client for Clash.</strong>
+  <strong>Современный кроссплатформенный клиент для Clash.</strong>
   <br>
-  With a focus on improved user experience and integration with modern control panels like <a href="https://github.com/remnawave/panel">Remnawave</a>.
+  С акцентом на улучшенный пользовательский опыт и интеграцию с современными панелями управления, такими как <a href="https://github.com/remnawave/panel">Remnawave</a>.
 </p>
 
 <p align="center">
-  <img src="https://github.com/this-xkit/Flowvy/blob/main/assets/images/screenshot_2.png" alt="Flowvy Screenshot" width="800">
+  <img src="https://github.com/this-xkit/Flowvy/blob/main/assets/images/screenshot_2.png" alt="Скриншот Flowvy" width="800">
 </p>
 
-## About The Project
+## О проекте
 
-**Flowvy** is a heavily modified fork of the open-source project [FlClash](https://github.com/chen08209/FlClash), aimed at improving the user experience and adding unique functionality for advanced users.
-
----
-
-## ✨ Features
-
-* **Enhanced Panel Integration:** Built-in **HWID** support for control panels (e.g., Remnawave).
-* **Dynamic Announcements:** Receive important messages from your provider (e.g., about subscription expiration or device limits) directly in the application's UI.
-* **Smart Defaults:** Customized out-of-the-box settings for a quick start.
-* **Russian Localization:** Full translation of the interface and installer.
+**Flowvy** — это сильно модифицированная версия проекта с открытым исходным кодом [FlClash](https://github.com/chen08209/FlClash), ориентированная на улучшение пользовательского опыта и добавление уникального функционала для продвинутых пользователей.
 
 ---
 
-## 🚀 Getting Started
+## ✨ Возможности
 
-Pre-built binaries for all platforms can be found on the [**Releases**](https://github.com/this-xkit/Flowvy/releases) page.
+* **Расширенная интеграция с панелями:** Встроенная поддержка **HWID** для панелей управления (например, Remnawave).
+* **Динамические уведомления:** Получение важных сообщений от провайдера (например, об окончании подписки или лимите устройств) прямо в интерфейсе приложения.
+* **Умные настройки по умолчанию:** Преднастроенные параметры для быстрого запуска без лишней конфигурации.
+* **Русская локализация:** Полный перевод интерфейса и установщика на русский язык.
 
 ---
 
-## 🛠️ Building From Source
+## 🚀 Начало работы
 
-If you want to build the project yourself, follow these steps.
+Готовые сборки для всех платформ доступны на странице [**Releases**](https://github.com/this-xkit/Flowvy/releases).
 
-### 1. Prerequisites
+---
 
-Ensure you have all the necessary tools installed:
+## 🛠️ Сборка из исходников
+
+Если вы хотите собрать проект самостоятельно, выполните следующие шаги.
+
+### 1. Предварительные требования
+
+Убедитесь, что у вас установлены все необходимые инструменты:
 
 * [**Flutter SDK**](https://flutter.dev/docs/get-started/install)
 * [**Go**](https://go.dev/dl/)
 * [**Rust**](https://www.rust-lang.org/tools/install)
 * **Git**
 
-As well as the tools for your target platform:
-* **For Windows:** [**Visual Studio**](https://visualstudio.microsoft.com/downloads/) with the **"Desktop development with C++"** workload and [**Inno Setup**](https://jrsoftware.org/isinfo.php).
-* **For Android:** **Android SDK** and **Android NDK**.
-* **For Linux:** `libayatana-appindicator3-dev` and `libkeybinder-3.0-dev`.
+А также инструменты для вашей целевой платформы:
 
-### 2. Cloning the Repository
+* **Для Windows:** [**Visual Studio**](https://visualstudio.microsoft.com/downloads/) с рабочей нагрузкой **"Разработка настольных приложений на C++"**, и [**Inno Setup**](https://jrsoftware.org/isinfo.php).
+* **Для Android:** **Android SDK** и **Android NDK**.
+* **Для Linux:** Пакеты `libayatana-appindicator3-dev` и `libkeybinder-3.0-dev`.
+
+### 2. Клонирование репозитория
 
 ```bash
-# Clone the repository
+# Клонируем репозиторий
 git clone https://github.com/this-xkit/Flowvy.git
 
-# Navigate to the project directory
+# Переходим в каталог проекта
 cd Flowvy
 
-# Download the Clash.Meta core and other dependencies. Do not skip this step!
+# Загружаем Clash.Meta core и другие зависимости. Не пропускайте этот шаг!
 git submodule update --init --recursive
-````
+```
 
-### 3\. Install Project Dependencies
+### 3. Установка зависимостей проекта
 
-Before the first build, you need to fetch all Dart packages:
+Перед первой сборкой нужно скачать все пакеты Dart:
 
 ```bash
 flutter pub get
 ```
 
-### 4\. Running the Build
+### 4. Запуск сборки
 
-Use the built-in `setup.dart` script to build for a specific platform. For most modern PCs, you will need the `amd64` architecture.
+Используйте встроенный скрипт `setup.dart` для сборки под нужную платформу. Для большинства современных ПК используется архитектура `amd64`.
 
 #### Windows
 
@@ -101,7 +102,7 @@ dart .\setup.dart macos --arch <arm64 | amd64>
 
 #### Android
 
-Ensure the `ANDROID_NDK` environment variable is set.
+Убедитесь, что установлена переменная окружения `ANDROID_NDK`.
 
 ```bash
 dart .\setup.dart android
