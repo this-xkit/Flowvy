@@ -4,7 +4,11 @@
 # Flowvy
 
 <p align="center">
+<<<<<<< HEAD
   <img src="https://github.com/this-xkit/Flowvy/blob/main/assets/images/icon.png" alt="Flowvy Logo" width="150">
+=======
+  <img src="https://github.com/this-xkit/Flowvy/blob/main/assets/images/icon.png" alt="Flowvy Logo" width="100">
+>>>>>>> 72205a99f695cd9ba9f0df85b704d19449bc4990
 </p>
 
 <p align="center">
@@ -34,7 +38,11 @@
 
 ## 🚀 Установка
 
+<<<<<<< HEAD
 Готовые сборки для всех платформ можно найти на странице [**Релизов (Releases)**](https://github.com/ТВОЙ_НИК/Flowvy/releases).
+=======
+Готовые сборки для всех платформ можно найти на странице [**Релизов**](https://github.com/this-xkit/Flowvy/releases).
+>>>>>>> 72205a99f695cd9ba9f0df85b704d19449bc4990
 
 ---
 
@@ -60,7 +68,11 @@
 
 ```bash
 # Клонируем репозиторий
+<<<<<<< HEAD
 git clone https://github.com/this-xkit/Flowvy
+=======
+git clone https://github.com/this-xkit/Flowvy.git
+>>>>>>> 72205a99f695cd9ba9f0df85b704d19449bc4990
 
 # Переходим в папку проекта
 cd Flowvy
